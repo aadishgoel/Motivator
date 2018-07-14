@@ -1,14 +1,12 @@
 from win10toast import ToastNotifier
 import time
 import random
+from data import data
 toaster = ToastNotifier()
 
-with open('myquoteslist.txt') as fp:
-    data = fp.readlines()
-
 while(True):
-    toaster.show_toast("Hey",
-                       random.choice(data),
-                       #icon_path="custom.ico",
-                       duration=5)
-    time.sleep(20)
+    quote = random.choice(data)
+    toaster.show_toast(quote["author"],
+                       quote["quote"],
+                       duration=10)
+    time.sleep(5)
